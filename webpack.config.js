@@ -14,15 +14,24 @@ module.exports = {
     },
     resolve: {
         modulesDirectories: ['node_modules', 'src'],
-        extensions: ['', '.js']
+        extensions: ['', '.js', '.css']
     },
     module: {
         loaders: [
-        {
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']
-        }
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']
+            },
+
+
+            { 
+                test: /\.css$/, loader: 'style-loader!css-loader' 
+            },
+
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+
+            
         ]
     },
     plugins: [
